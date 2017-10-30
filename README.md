@@ -35,7 +35,7 @@ A simple pinyin input method program written in C++ that converts pinyin to corr
 * The dissipatiosn of character combinations are recorded in a STL unordered map from `dissipation_map.txt`. For  combinations not in the map, the result is obtained from the combination of "##" and the last character. If the last character is not recorded even in combination with "##", which means it does not appear in the whole sina news corpus, the largest dissipation in the unordered map is assigned to it.
 
 ### About preprocessing
-* Preprocessing is Python based for higher development effeciency and is divided into 2 parts. The first part is a character and word counter for the sina news corpus. And the second is to find the corresponding dissipation from the counting result.
+* Preprocessing is Python based for higher development effeciency and is divided into 2 parts. The first part is a character and word counter in `word_count.py` for the sina news corpus. And the second is to find the corresponding dissipation from the counting result in `calc_probability.py`.
 * The character and word count are first converted to conditional probabilities, and then modulated by character frequency to avoid dissipation for unseen words. The constant for the modulation is `alpha` which will be discussed in **Analysis of parameters**. The negative log of the probabilities are taken as the dissipations. "##" acting as a abstract symbol is also added to the mapping to provide a unified interface for dissipations of single characters.
 * The dissipations are powered by a parameter `beta` to provide better performance. See **Analysis of parameters** for details.
 
